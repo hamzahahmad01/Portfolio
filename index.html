@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="Hamzah Ahmad, Full-Stack Developer">
+<meta property="og:description" content="Full-stack developer working with React.js, Node.js and MySQL. Projects, experience and contact.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23000'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='800' fill='%238fa5ff' text-anchor='middle'%3EHA%3C/text%3E%3C/svg%3E">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Hamzah Ahmad Portfolio</title>
+<meta name="description" content="Hamzah Ahmad, full-stack developer working with React.js, Node.js and MySQL. Projects, experience and contact.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single 65rem column, left-aligned; huge name hero, sections keyed by a mono label rail on the left */
+/* Single black theme by choice: same look on every device */
+:root{
+  --bg:#000000; --surface:#0c0e13; --ink:#f2f4f8; --muted:#959cab; --line:#1f232c;
+  --accent:#8fa5ff; --accent-soft:#141a33;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"Instrument Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  color-scheme:dark;
+}
+::selection{background:var(--accent);color:var(--bg)}
+
+*{box-sizing:border-box}
+/* Fluid scale: 16px on phones/laptops, grows to 20px on large desktops; every size below is in rem so the whole page scales */
+html{font-size:clamp(16px,calc(9px + .55vw),20px)}
+body{background:var(--bg);color:var(--ink);font:1rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:0.1875rem;border-radius:0.25rem}
+.wrap{max-width:76rem;margin:0 auto;padding-left:max(1rem,4vw,env(safe-area-inset-left,0px));padding-right:max(1rem,4vw,env(safe-area-inset-right,0px))}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(0.625rem);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:0.875rem}
+.logo{font:800 1.125rem var(--display);text-decoration:none;letter-spacing:-.02em}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:1.375rem;flex-wrap:wrap}
+nav a{font:500 0.8125rem var(--mono);text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+
+.hero{padding-block:4.5rem 3.5rem}
+.status{display:inline-flex;align-items:center;gap:0.5rem;font:500 0.75rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.status i{width:0.5rem;height:0.5rem;border-radius:50%;background:#1fa463;box-shadow:0 0 0 0.25rem color-mix(in srgb,#1fa463 25%,transparent)}
+.hero h1{font:800 clamp(3.25rem,11vw,7.75rem)/.92 var(--display);letter-spacing:-.045em;margin:1.375rem 0 0;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.role{font:600 clamp(1.25rem,3vw,1.75rem)/1.25 var(--display);letter-spacing:-.01em;margin:1.375rem 0 0;max-width:26ch;text-wrap:balance}
+.intro{color:var(--muted);max-width:62ch;margin:1.125rem 0 0;font-size:1.0625rem}
+.cta{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:1.875rem}
+.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.25rem;border-radius:62.4375rem;font:600 0.9375rem var(--body);text-decoration:none;border:1px solid var(--line)}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn:hover{border-color:var(--accent)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.375rem,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:0.875rem;overflow:hidden;margin-top:3rem}
+.facts div{background:var(--surface);padding:1.125rem 1.25rem}
+.facts b{display:block;font:800 1.875rem var(--display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.facts span{font:500 0.75rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+
+section.block{padding-block:3.5rem;border-top:1px solid var(--line);display:grid;grid-template-columns:11.25rem minmax(0,1fr);gap:2rem}
+.label{font:500 0.75rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.1em;padding-top:0.5rem}
+.label b{display:block;color:var(--accent);font-weight:500}
+h2{font:800 clamp(1.875rem,4.5vw,2.75rem)/1.05 var(--display);letter-spacing:-.03em;margin:0 0 1.75rem;text-wrap:balance}
+
+.projects{display:grid;gap:1.125rem}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:1rem;padding:1.625rem;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0.5rem 1.5rem;transition:border-color .2s,transform .2s}
+.proj:hover{border-color:var(--accent)}
+/* 3D tilt: --rx/--ry set from the pointer, combined with the scroll-reveal transform */
+.proj[data-reveal]{position:relative;--rx:0deg;--ry:0deg;--lift:0px;transform:perspective(62.5rem) translateY(calc((1 - var(--p))*3.5rem - var(--lift))) scale(calc(.965 + .035*var(--p))) rotateX(var(--rx)) rotateY(var(--ry));transition:transform .5s cubic-bezier(.2,.7,.2,1),border-color .2s,box-shadow .3s}
+.proj.tilting{transition:transform .08s linear,border-color .2s,box-shadow .3s;--lift:0.375rem;box-shadow:0 1.5rem 3.125rem -24px color-mix(in srgb,var(--accent) 45%,transparent)}
+.proj::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(26.25rem circle at var(--gx,50%) var(--gy,50%),color-mix(in srgb,var(--accent) 16%,transparent),transparent 60%)}
+.proj.tilting::after{opacity:1}
+.proj.featured{border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.proj .kicker{grid-column:1/-1;font:500 0.75rem var(--mono);color:var(--accent);text-transform:uppercase;letter-spacing:.08em}
+.proj h3{font:600 1.375rem/1.2 var(--display);margin:0;letter-spacing:-.01em}
+.proj .yr{font:500 0.8125rem var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.proj p{grid-column:1/-1;margin:0.25rem 0 0;color:var(--muted);max-width:65ch}
+.proj ul{grid-column:1/-1;margin:0.375rem 0 0;padding-left:1.125rem;color:var(--muted);max-width:68ch}
+.proj ul li{padding:2px 0}
+.tags{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:0.375rem;margin-top:0.625rem}
+.tags span{font:500 0.75rem var(--mono);padding:0.25rem 0.625rem;border-radius:62.4375rem;background:var(--bg);border:1px solid var(--line)}
+
+.timeline{list-style:none;margin:0;padding:0;display:grid}
+.timeline>li{display:grid;grid-template-columns:9.375rem minmax(0,1fr);gap:1.25rem;padding-block:1.375rem;border-bottom:1px dashed var(--line)}
+.timeline>li:last-child{border-bottom:0}
+.when{font:500 0.8125rem var(--mono);color:var(--muted);font-variant-numeric:tabular-nums;padding-top:0.25rem}
+.timeline h3{font:600 1.25rem/1.3 var(--display);margin:0}
+.timeline .org{font:500 0.9375rem var(--body);color:var(--muted);margin:2px 0 0}
+.timeline .org b{color:var(--ink);font-weight:600}
+.timeline ul{margin:0.625rem 0 0;padding-left:1.125rem;color:var(--muted)}
+.timeline ul li{padding:2px 0}
+
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(12.5rem,1fr));gap:1.5rem}
+.skills h4{font:500 0.75rem var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:0 0 0.625rem}
+.skills p{margin:0;font-size:1rem}
+
+.contact h2{font-size:clamp(2.25rem,7vw,4.5rem);max-width:14ch}
+.mail{display:flex;flex-wrap:wrap;align-items:center;gap:0.75rem;margin-top:0.5rem}
+.mail code{font:500 clamp(1rem,2.6vw,1.375rem) var(--mono);background:var(--surface);border:1px solid var(--line);padding:0.625rem 1rem;border-radius:0.625rem;user-select:all;word-break:break-all}
+.mail button{font:600 0.875rem var(--body);padding:0.6875rem 1.125rem;border-radius:62.4375rem;border:1px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer}
+.socials{display:flex;gap:1.375rem;flex-wrap:wrap;margin-top:1.625rem}
+.socials a{font:500 0.875rem var(--mono);text-decoration:none;color:var(--muted)}
+.socials a:hover{color:var(--accent)}
+footer{border-top:1px solid var(--line);padding-block:1.625rem;font:500 0.75rem var(--mono);color:var(--muted)}
+
+/* resume */
+.certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(16.25rem,1fr));gap:1.125rem}
+.cert{background:var(--surface);border:1px solid var(--line);border-left:0.1875rem solid var(--accent);border-radius:0.75rem;padding:1.375rem 1.5rem;display:grid;gap:0.5rem;align-content:start}
+.cert-meta{font:500 0.75rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.cert h3{font:600 1.1875rem/1.3 var(--display);margin:0;letter-spacing:-.01em;text-wrap:balance}
+.cert-link{justify-self:start;margin-top:0.375rem;font:600 0.875rem var(--body);text-decoration:none;color:var(--accent);border-bottom:1px solid color-mix(in srgb,var(--accent) 35%,transparent)}
+.cert-link:hover{border-color:var(--accent)}
+.msg{margin-top:2.75rem;background:var(--surface);border:1px solid var(--line);border-radius:1rem;padding:1.625rem;display:grid;gap:1rem;max-width:42.5rem}
+.msg h3{font:600 1.375rem/1.2 var(--display);margin:0;letter-spacing:-.01em}
+.msg-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(12.5rem,1fr));gap:1rem}
+.msg label{display:grid;gap:0.375rem;font:500 0.75rem var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);min-width:0}
+.msg input,.msg textarea{font:400 1rem/1.5 var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:0.625rem;padding:0.75rem 0.875rem;width:100%;text-transform:none;letter-spacing:0;resize:vertical;transition:border-color .2s,box-shadow .2s}
+.msg input::placeholder,.msg textarea::placeholder{color:color-mix(in srgb,var(--muted) 60%,transparent)}
+.msg input:focus,.msg textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 0.1875rem color-mix(in srgb,var(--accent) 25%,transparent)}
+.msg .invalid{border-color:#ff7a7a}
+.msg-foot{display:flex;align-items:center;justify-content:space-between;gap:0.75rem;flex-wrap:wrap}
+.msg-foot .btn{cursor:pointer}
+.msg-count{font:500 0.75rem var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.msg-status{margin:0;font-size:0.875rem;color:var(--muted)}
+.msg-status a{color:var(--accent)}
+.resume-row{display:flex;align-items:center;flex-wrap:wrap;gap:1rem 1.5rem}
+.resume-row h2{margin:0}
+.dl-note{font:500 0.8125rem var(--mono);color:var(--muted);margin:0.75rem 0 0}
+
+/* ---------- scroll motion ---------- */
+/* --p (0→1) is set per element by the scroll script; defaults to 1 so everything is visible without JS */
+[data-reveal]{--p:1;opacity:calc(.08 + .92*var(--p));transform:translateY(calc((1 - var(--p))*3.5rem)) scale(calc(.965 + .035*var(--p)));filter:blur(calc((1 - var(--p))*0.375rem));will-change:transform,opacity}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--accent);transform-origin:left;transform:scaleX(var(--sp,0))}
+nav a{position:relative;transition:color .2s}
+nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+nav a.active{color:var(--ink)}
+nav a.active::after{transform:scaleX(1)}
+
+.hero{position:relative;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(color-mix(in srgb,var(--muted) 38%,transparent) 1.2px,transparent 1.6px);background-size:1.375rem 1.375rem;-webkit-mask-image:radial-gradient(ellipse 70% 60% at 75% 35%,#000 15%,transparent 70%);mask-image:radial-gradient(ellipse 70% 60% at 75% 35%,#000 15%,transparent 70%);transform:translateY(calc(var(--sy,0)*.18px))}
+.hero::after{content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse 60% 55% at 80% 20%,color-mix(in srgb,var(--accent) 16%,transparent),transparent 70%);transform:translateY(calc(var(--sy,0)*.1px))}
+.hero h1 em{text-shadow:0 0 3.75rem color-mix(in srgb,var(--accent) 35%,transparent)}
+.par{display:inline-block;transform:translateY(calc(var(--sy,0)*.32px));opacity:calc(1 - var(--sy,0)/650)}
+
+.band{overflow:hidden;border-top:1px solid var(--line);padding-block:2.75rem;display:grid;gap:0.375rem}
+.band p{margin:0;width:max-content;white-space:nowrap;font:800 clamp(2.5rem,8vw,6rem)/1.05 var(--display);letter-spacing:-.04em;transform:translateX(calc(var(--m,.5)*-28%))}
+.band p.outline{color:transparent;-webkit-text-stroke:1.5px var(--muted);transform:translateX(calc((var(--m,.5) - 1)*28%))}
+.band span{color:var(--accent)}
+
+.timeline{position:relative;padding-left:1.875rem}
+.timeline::before,.timeline::after{content:"";position:absolute;left:0.3125rem;top:1.875rem;bottom:1.875rem;width:2px;border-radius:2px;background:var(--line)}
+.timeline::after{background:var(--accent);transform-origin:top;transform:scaleY(var(--t,1))}
+.timeline>li{position:relative}
+.timeline>li::before{content:"";position:absolute;left:-30px;top:1.75rem;width:0.75rem;height:0.75rem;border-radius:50%;background:var(--bg);border:2px solid var(--accent);box-shadow:inset 0 0 0 calc(var(--p,1)*0.375rem) var(--accent);z-index:1}
+
+@media (max-width:720px){
+  header .wrap{flex-wrap:wrap;row-gap:.5rem;padding-block:.75rem}
+  nav{width:100%;flex-wrap:nowrap;overflow-x:auto;gap:1.25rem;scrollbar-width:none;padding-bottom:.35rem}
+  nav::-webkit-scrollbar{display:none}
+  nav a{white-space:nowrap}
+  section.block{grid-template-columns:1fr;gap:0.375rem}
+  .timeline>li{grid-template-columns:1fr;gap:0.25rem}
+  .proj{grid-template-columns:1fr}
+  .hero{padding-block:3rem 2.5rem}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero>*{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
+  .hero>*:nth-child(2){animation-delay:.06s}.hero>*:nth-child(3){animation-delay:.12s}
+  .hero>*:nth-child(4){animation-delay:.18s}.hero>*:nth-child(5){animation-delay:.24s}.hero>*:nth-child(6){animation-delay:.3s}
+  @keyframes rise{from{transform:translateY(0.75rem)}to{transform:none}}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">Hamzah Ahmad<span>.</span></a>
+    <nav aria-label="Sections">
+      <a href="#work">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#resume">Resume</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+
+<main class="wrap" id="top">
+  <section class="hero">
+    <div class="status"><i></i>CSE graduate, 2026 · Open to opportunities</div>
+    <h1><span class="par">Hamzah<br><em>Ahmad.</em></span></h1>
+    <p class="role">Full-stack developer working with React.js, Node.js and MySQL.</p>
+    <p class="intro">Freshly graduated CSE engineer from SRM, which means I spent four years being told to "just Google it" and now hold a degree in it. At CSIR-Indian Institute of Petroleum I built an entire project tracking system, with role-based access so the Viewer can view and absolutely nothing else. I wrote 35+ API endpoints, survived JWT token refresh logic with my sanity mostly intact, and taught an Excel import to roll back cleanly, which is more respect than most Excel files deserve. I speak JavaScript, Python, C++ and SQL fluently, and Java the way tourists speak French.</p>
+    <div class="cta">
+      <a class="btn primary" href="#work">See my work</a>
+      <a class="btn" href="https://github.com/hamzahahmad01" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn" href="https://www.linkedin.com/in/hamzah-ahmad-10334124a" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+    <div class="facts">
+      <div><b>35+</b><span>REST endpoints built</span></div>
+      <div><b>4</b><span>Access roles secured</span></div>
+      <div><b>8</b><span>Tables designed</span></div>
+      <div><b>2026</b><span>Graduated B.Tech</span></div>
+    </div>
+  </section>
+
+  <section class="block" id="work">
+    <div class="label" data-reveal><b>Projects</b>Selected work</div>
+    <div>
+      <h2 data-reveal>Things I've built</h2>
+      <div class="projects">
+        <article data-reveal class="proj featured">
+          <div class="kicker">Internship project · CSIR-IIP</div>
+          <h3>Docking and Prediction System</h3><span class="yr">2026</span>
+          <p>A full-stack web application for tracking R&amp;D projects, milestones, funding agencies and project closures across the RPPM Division.</p>
+          <ul>
+            <li>Normalized MySQL schema with 8 tables and a SQL view for project overview reporting.</li>
+            <li>Bulk Excel/CSV import with row-level validation, preview before commit and transactional rollback.</li>
+            <li>Recharts dashboards for project status, cost and revenue.</li>
+          </ul>
+          <div class="tags"><span>React.js</span><span>Vite</span><span>Node.js</span><span>Express.js</span><span>MySQL</span><span>JWT</span><span>Multer</span><span>SheetJS</span><span>Recharts</span></div>
+        </article>
+        <article data-reveal class="proj">
+          <h3>Movie Recommendation Website</h3><span class="yr">May 2025</span>
+          <p>A website that suggests movies based on user preference data. The recommendation engine runs in Node.js and serves results through REST APIs to a hand-built HTML, CSS and JavaScript interface.</p>
+          <div class="tags"><span>Node.js</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>REST APIs</span><span>JSON</span></div>
+        </article>
+        <article data-reveal class="proj">
+          <h3>Cryptocurrency Price Predictor</h3><span class="yr">Aug 2024</span>
+          <p>A web application that predicts Bitcoin price trends with prediction algorithms written in Python, showing live and predicted prices side by side on a dashboard fed by real-time cryptocurrency APIs. API keys and configuration are kept in environment variables.</p>
+          <div class="tags"><span>Python</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>REST APIs</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="band" aria-hidden="true">
+    <p>React.js <span>·</span> Node.js <span>·</span> Express.js <span>·</span> MySQL <span>·</span> JWT <span>·</span> Recharts <span>·</span> React.js <span>·</span> Node.js <span>·</span></p>
+    <p class="outline">REST APIs · Python · C++ · SQL · Vite · SheetJS · REST APIs · Python · C++ ·</p>
+  </div>
+
+  <section class="block" id="experience">
+    <div class="label" data-reveal><b>Experience</b>Work &amp; education</div>
+    <div>
+      <h2 data-reveal>Where I've worked and studied</h2>
+      <ol class="timeline">
+        <li data-reveal>
+          <div class="when">Apr – Aug 2026</div>
+          <div>
+            <h3>Software Development Intern</h3>
+            <p class="org"><b>CSIR-Indian Institute of Petroleum</b> · RPPM Division, Dehradun</p>
+            <ul>
+              <li>Developed the Docking and Prediction System, a full-stack app for tracking R&amp;D projects, milestones, funding agencies and closures.</li>
+              <li>Built 35+ REST API endpoints in Node.js and Express.js for projects, employees, divisions, funding agencies and milestones.</li>
+              <li>Implemented JWT authentication with token refresh and revocation on logout.</li>
+              <li>Added role-based access control for 4 roles (Admin, Data Entry Operator, Project Lead, Viewer) in API middleware and frontend routing.</li>
+              <li>Built a bulk Excel/CSV import module with Multer and SheetJS, plus an import history log with filtering and CSV export for auditing.</li>
+            </ul>
+          </div>
+        </li>
+        <li data-reveal>
+          <div class="when">2022 – 2026</div>
+          <div>
+            <h3>B.Tech, Computer Science and Engineering</h3>
+            <p class="org"><b>SRM Institute of Science and Technology</b> · Chennai</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="skills">
+    <div class="label" data-reveal><b>Skills</b>Tools I use</div>
+    <div>
+      <h2 data-reveal>What I work with</h2>
+      <div class="skills">
+        <div data-reveal><h4>Languages</h4><p>JavaScript, Python, C++, SQL, Java (basic)</p></div>
+        <div data-reveal><h4>Frontend</h4><p>React.js, React Router, HTML5, CSS3, Recharts, Vite</p></div>
+        <div data-reveal><h4>Backend</h4><p>Node.js, Express.js, REST APIs, JWT Authentication, Multer</p></div>
+        <div data-reveal><h4>Database</h4><p>MySQL: schema design, joins, views, transactions</p></div>
+        <div data-reveal><h4>Tools</h4><p>Git, VS Code, npm, SheetJS (xlsx)</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="certifications">
+    <div class="label" data-reveal><b>Certifications</b>Courses completed</div>
+    <div>
+      <h2 data-reveal>Certifications</h2>
+      <div class="certs">
+        <article class="cert" data-reveal>
+          <span class="cert-meta">Udemy · Jul 2025</span>
+          <h3>AWS Certified Data Engineer – Associate: Hands-On + Exams</h3>
+          <a class="cert-link" href="https://udemy-certificate.s3.amazonaws.com/pdf/UC-7534748f-566f-4524-a48d-dccbb5832ec7.pdf" target="_blank" rel="noopener">View certificate ↗</a>
+        </article>
+        <article class="cert" data-reveal>
+          <span class="cert-meta">Udemy · Jul 2025</span>
+          <h3>Software Development From A to Z – Learn What Truly Matters</h3>
+          <a class="cert-link" href="https://udemy-certificate.s3.amazonaws.com/pdf/UC-30e7267f-ae88-487c-86f4-c2fd5ac197cb.pdf" target="_blank" rel="noopener">View certificate ↗</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="resume">
+    <div class="label" data-reveal><b>Resume</b>One page, no fluff</div>
+    <div>
+      <div class="resume-row" data-reveal>
+        <h2>Resume</h2>
+        <a class="btn primary" id="dlResume" href="resume.pdf" download="Hamzah_Ahmad_Resume.pdf">↓ Download PDF</a>
+      </div>
+      <p class="dl-note" id="dlNote" hidden></p>
+    </div>
+  </section>
+
+  <section class="block contact" id="contact">
+    <div class="label" data-reveal><b>Contact</b>Say hello</div>
+    <div>
+      <h2 data-reveal>Let's build something together.</h2>
+      <div class="mail" data-reveal>
+        <code id="email">hamzah001ahmad@gmail.com</code>
+        <button type="button" id="copyBtn">Copy email</button>
+      </div>
+      <div class="socials">
+        <a href="https://github.com/hamzahahmad01" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/hamzah-ahmad-10334124a" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+
+      <form class="msg" id="msgForm" data-reveal novalidate>
+        <h3>Drop a quick message</h3>
+        <div class="msg-row">
+          <label for="msgName">Your name<input id="msgName" name="name" type="text" autocomplete="name" placeholder="Jane Recruiter" required></label>
+          <label for="msgEmail">Your email<input id="msgEmail" name="email" type="email" autocomplete="email" placeholder="jane@company.com" required></label>
+        </div>
+        <label for="msgText">Message<textarea id="msgText" name="message" rows="4" maxlength="1000" placeholder="We have a role you'd be great for…" required></textarea></label>
+        <div class="msg-foot">
+          <span class="msg-count" id="msgCount">0 / 1000</span>
+          <button type="submit" class="btn primary">Send message →</button>
+        </div>
+        <p class="msg-status" id="msgStatus" role="status" hidden></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">© 2026 Hamzah Ahmad</div></footer>
+
+<script>
+(function(){
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const header=document.querySelector('header');
+  const hero=document.querySelector('.hero');
+  const reveals=[...document.querySelectorAll('[data-reveal]')];
+  const tl=document.querySelector('.timeline');
+  const band=document.querySelector('.band');
+  const links=[...document.querySelectorAll('nav a')];
+  const sections=links.map(a=>document.querySelector(a.getAttribute('href')));
+  const clamp=v=>Math.max(0,Math.min(1,v));
+  let ticking=false;
+  function frame(){
+    ticking=false;
+    const vh=innerHeight, sy=scrollY, max=document.documentElement.scrollHeight-vh;
+    header.style.setProperty('--sp',max>0?clamp(sy/max):0);
+    let current=-1;
+    sections.forEach((s,i)=>{if(s&&s.getBoundingClientRect().top<vh*.4)current=i});
+    links.forEach((a,i)=>a.classList.toggle('active',i===current));
+    if(reduce)return;
+    hero.style.setProperty('--sy',Math.min(sy,900));
+    for(const el of reveals){
+      const p=clamp((vh*.95-el.getBoundingClientRect().top)/(vh*.32));
+      el.style.setProperty('--p',(1-Math.pow(1-p,3)).toFixed(3));
+    }
+    const r=tl.getBoundingClientRect();
+    tl.style.setProperty('--t',clamp((vh*.6-r.top)/r.height).toFixed(3));
+    const b=band.getBoundingClientRect();
+    band.style.setProperty('--m',clamp((vh-b.top)/(vh+b.height)).toFixed(3));
+  }
+  const req=()=>{if(!ticking){ticking=true;requestAnimationFrame(frame)}};
+  addEventListener('scroll',req,{passive:true});
+  addEventListener('resize',req);
+  frame();
+
+  // 3D tilt on project cards (mouse / trackpad only)
+  if(!reduce && matchMedia('(hover: hover) and (pointer: fine)').matches){
+    document.querySelectorAll('.proj').forEach(card=>{
+      card.addEventListener('pointermove',e=>{
+        const r=card.getBoundingClientRect();
+        const x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+        card.classList.add('tilting');
+        card.style.setProperty('--ry',((x-.5)*10).toFixed(2)+'deg');
+        card.style.setProperty('--rx',((.5-y)*8).toFixed(2)+'deg');
+        card.style.setProperty('--gx',(x*100).toFixed(1)+'%');
+        card.style.setProperty('--gy',(y*100).toFixed(1)+'%');
+      });
+      card.addEventListener('pointerleave',()=>{
+        card.classList.remove('tilting');
+        card.style.setProperty('--rx','0deg');
+        card.style.setProperty('--ry','0deg');
+      });
+    });
+  }
+})();
+// Resume download: inside the Claude viewer use the downloads capability; on a normal host the plain link works.
+(function(){
+  const a=document.getElementById('dlResume'), note=document.getElementById('dlNote');
+  if(!window.claude||typeof window.claude.use!=='function')return;
+  a.addEventListener('click',async e=>{
+    e.preventDefault();
+    const say=t=>{note.textContent=t;note.hidden=false};
+    try{
+      const dl=await window.claude.use('downloads');
+      if(!dl){say('Downloading is not available here. Use "Open in new tab" instead.');return}
+      const blob=await (await fetch('resume.pdf')).blob();
+      await dl.save({filename:'Hamzah_Ahmad_Resume.pdf',data:blob});
+      say('Resume saved.');
+    }catch(err){
+      if(err&&err.code==='declined')return;
+      if(err&&err.code==='rate_limited'){say('A save prompt is already open.');return}
+      say('Could not save the file here. Use "Open in new tab" instead.');
+    }
+  });
+})();
+// Message box: opens the visitor's email app with the message filled in
+(function(){
+  const f=document.getElementById('msgForm'), txt=document.getElementById('msgText');
+  const count=document.getElementById('msgCount'), status=document.getElementById('msgStatus');
+  const TO='hamzah001ahmad@gmail.com', nameEl=document.getElementById('msgName'), mailEl=document.getElementById('msgEmail');
+  txt.addEventListener('input',()=>{count.textContent=txt.value.length+' / 1000'});
+  f.addEventListener('submit',e=>{
+    e.preventDefault();
+    const name=nameEl.value.trim(), email=mailEl.value.trim(), msg=txt.value.trim();
+    let bad=null;
+    [[nameEl,!name],[mailEl,!/^\S+@\S+\.\S+$/.test(email)],[txt,!msg]].forEach(([el,isBad])=>{el.classList.toggle('invalid',isBad);if(isBad&&!bad)bad=el});
+    status.hidden=false;
+    if(bad){status.textContent='Please fill in your name, a valid email and a message.';bad.focus();return}
+    const subject='Portfolio message from '+name;
+    const body=msg+'\n\n— '+name+' ('+email+')';
+    const href='mailto:'+TO+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    const a=document.createElement('a');a.href=href;a.rel='noopener';document.body.appendChild(a);a.click();a.remove();
+    status.innerHTML='';
+    status.append('Your email app should open with the message ready to send. If it didn\'t, email it to '+TO+' directly.');
+  });
+})();
+const btn=document.getElementById('copyBtn');
+btn.addEventListener('click',()=>{
+  const t=document.getElementById('email').textContent;
+  const done=()=>{btn.textContent='Copied';setTimeout(()=>btn.textContent='Copy email',1600)};
+  const fallback=()=>{const r=document.createRange();r.selectNodeContents(document.getElementById('email'));const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Selected, press Ctrl+C'};
+  try{navigator.clipboard.writeText(t).then(done,fallback)}catch(e){fallback()}
+});
+</script>
+
+</body>
+</html>
